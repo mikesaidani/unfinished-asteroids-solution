@@ -29,9 +29,13 @@ ENGINE.Asteroid.prototype = {
 
   hit: function(data) {
 
+    app.playSound('asteroid-hit');
+
     this.hp -= data.damage;
 
     if (this.hp <= 0) {
+
+      app.playSound('asteroid-crush');
 
       if (this.splits) this.split();
 

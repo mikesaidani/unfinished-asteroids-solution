@@ -1,7 +1,7 @@
 app.game = {
 
   start: function() {
-    
+
     this.entities = new ENGINE.Entities;
     this.collisions = new ENGINE.Collisions(this.entities);
     this.collisions.callback = this.collisionHandler.bind(this);
