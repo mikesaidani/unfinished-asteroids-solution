@@ -23,7 +23,8 @@ ENGINE.Player = function(args) {
     maxCooldown: 0.3,
 
     hp: 10,
-    maxHp: 10
+    maxHp: 10,
+    score: 0
 
   }, args);
 
@@ -70,6 +71,10 @@ ENGINE.Player.prototype = {
 
   },
 
+  addPoints: function(points) {
+    this.score += points;
+  },
+
   applyForce: function(direction, value) {
     this.forceDirection = direction;
     this.force = value;
@@ -94,6 +99,7 @@ ENGINE.Player.prototype = {
       x: this.x,
       y: this.y,
       direction: this.direction,
+      shooter: this,
       team: this.team,
       damage: 1
     });
