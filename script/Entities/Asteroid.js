@@ -41,7 +41,13 @@ ENGINE.Asteroid.prototype = {
       if (this.splits) {
         this.split();
       } else {
-        this.collection.add(ENGINE.Coin, {x: this.x, y: this.y});
+
+        if (Math.random() > .7) {
+          this.collection.add(ENGINE.Powerup, {x: this.x, y: this.y, type: "medikit"});
+        } else {
+          this.collection.add(ENGINE.Coin, {x: this.x, y: this.y});
+        }
+
       }
 
       this.collection.remove(this);

@@ -75,6 +75,18 @@ ENGINE.Player.prototype = {
     this.score += points;
   },
 
+  powerUp: function(power) {
+    switch(power.type) {
+      case 'medikit':
+        if (this.hp < this.maxHp) {
+          this.hp = Math.min(this.maxHp, this.hp + (this.maxHp / 2));
+        }
+        break;
+      default:
+        break;
+    }
+  },
+
   applyForce: function(direction, value) {
     this.forceDirection = direction;
     this.force = value;
