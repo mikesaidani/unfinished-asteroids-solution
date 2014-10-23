@@ -12,7 +12,10 @@ ENGINE.Coin.prototype = {
 
   collidable: true,
 
-  radius: 3,
+  radius: 5,
+  duration: 1,
+  frame: 0,
+  delta: 0,
 
   collision: function(object) {
 
@@ -27,12 +30,13 @@ ENGINE.Coin.prototype = {
   },
 
   step: function(delta) {
-
+    this.delta += delta;
+    this.frame = 7 * (this.delta % this.duration / this.duration) | 0;
   },
 
   render: function(delta) {
-
-    app.layer.fillStyle("#ff0").fillCircle(this.x, this.y, this.radius);
+    var sprite = [this.frame * 10, 0, 10, 10];
+    app.layer.drawRegion(app.images.coins, sprite, this.x, this.y);
 
   }
 
